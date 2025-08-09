@@ -124,6 +124,12 @@
     document.querySelector('.hero h1').textContent = config.home.heroTitle;
     document.querySelector('.hero .lead').textContent = config.home.heroSubtitle;
     
+    // Update banner image
+    const bannerImg = document.querySelector('.hero img');
+    if (bannerImg && config.home.bannerImage) {
+      bannerImg.src = config.home.bannerImage;
+    }
+    
     // Update welcome section
     document.querySelector('section.py-5 h2').textContent = config.home.welcomeTitle;
     document.querySelector('section.py-5 .lead').textContent = config.home.welcomeText;
