@@ -1,34 +1,151 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A1 Adorners</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="assets/js/config.js"></script>
 </head>
 <body>
 
-<header>
-  <h1>A1 Adorners</h1>
-  <p>Tent House Supplier & Event Rentals in Salem</p>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">A1 Adorners</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="services.html">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="gallery.html">Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-<div class="container">
-  <h2>Welcome to A1 Adorners</h2>
-  <p>Your trusted partner for tents, stages, and event rentals in Salem. We provide complete solutions for weddings, meetings, school functions, hotel functions, housewarming, and more.</p>
-  <img src="assets/images/banner-placeholder.jpg" alt="Event Banner">
-</div>
+<!-- Hero Section -->
+<section class="hero bg-primary text-white py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <h1 class="display-4 fw-bold mb-3">A1 Adorners</h1>
+        <p class="lead mb-4">Tent House Supplier & Event Rentals in Salem</p>
+        <a href="services.html" class="btn btn-light btn-lg">View Our Services</a>
+      </div>
+      <div class="col-lg-6">
+        <img src="assets/images/banner-placeholder.jpg" alt="Event Banner" class="img-fluid rounded shadow">
+      </div>
+    </div>
+  </div>
+</section>
 
-<footer>
-  <p>© 2025 A1 Adorners | Tent House Supplier & Event Rentals in Salem</p>
+<!-- Welcome Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center">
+        <h2 class="mb-4">Welcome to A1 Adorners</h2>
+        <p class="lead">Your trusted partner for tents, stages, and event rentals in Salem. We provide complete solutions for weddings, meetings, school functions, hotel functions, housewarming, and more.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Preview -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h3>Our Main Offerings</h3>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="text-center">
+          <i class="bi bi-house display-4 text-primary mb-3"></i>
+          <h5>Tent Rentals</h5>
+          <p>High-quality tents for all events</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="text-center">
+          <i class="bi bi-music-note display-4 text-primary mb-3"></i>
+          <h5>Stage Setup</h5>
+          <p>Professional stage setup & decoration</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="text-center">
+          <i class="bi bi-calendar-event display-4 text-primary mb-3"></i>
+          <h5>Event Planning</h5>
+          <p>Complete event planning assistance</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <p class="mb-0">© 2025 A1 Adorners | Tent House Supplier & Event Rentals in Salem</p>
+      </div>
+    </div>
+  </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/utils.js"></script>
+<script>
+  // Home page specific content population
+  document.addEventListener('DOMContentLoaded', function() {
+    const config = window.siteConfig;
+    
+    // Update hero section
+    document.querySelector('.hero h1').textContent = config.home.heroTitle;
+    document.querySelector('.hero .lead').textContent = config.home.heroSubtitle;
+    
+    // Update welcome section
+    document.querySelector('section.py-5 h2').textContent = config.home.welcomeTitle;
+    document.querySelector('section.py-5 .lead').textContent = config.home.welcomeText;
+    
+    // Update services preview
+    const servicesContainer = document.querySelector('.bg-light .row.g-4');
+    if (servicesContainer) {
+      servicesContainer.innerHTML = '';
+      config.home.servicesPreview.forEach(service => {
+        const serviceDiv = document.createElement('div');
+        serviceDiv.className = 'col-md-4';
+        serviceDiv.innerHTML = `
+          <div class="text-center">
+            <i class="${service.icon} display-4 text-primary mb-3"></i>
+            <h5>${service.title}</h5>
+            <p>${service.description}</p>
+          </div>
+        `;
+        servicesContainer.appendChild(serviceDiv);
+      });
+    }
+  });
+</script>
 </body>
 </html>
